@@ -2,11 +2,12 @@
 //  AppDelegate.m
 //  objc_runtime_001
 //
-//  Created by 李龙辉 on 16/3/18.
+//  Created by DHL on 16/3/18.
 //  Copyright © 2016年 DHL. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "HomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

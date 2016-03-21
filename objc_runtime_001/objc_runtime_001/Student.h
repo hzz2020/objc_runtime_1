@@ -18,7 +18,7 @@
 @property (nonatomic, copy) NSString *sex;
 
 // 方法
--(void) getVarNameAndType;        //
+-(void) objcMethod;        //
 
 -(void) learnInstance:(NSString *)string;
 

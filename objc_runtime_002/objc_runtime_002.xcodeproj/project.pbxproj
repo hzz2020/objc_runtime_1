@@ -17,6 +17,7 @@
 		4309ED911CA0EB730000FBBE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4309ED8F1CA0EB730000FBBE /* HomeViewController.xib */; };
 		4309ED931CA0ECCA0000FBBE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4309ED921CA0ECCA0000FBBE /* Default-568h@2x.png */; };
 		4309ED961CA0ECFA0000FBBE /* Person+test.m in Sources */ = {isa = PBXBuildFile; fileRef = 4309ED951CA0ECFA0000FBBE /* Person+test.m */; };
+		4309ED991CA0FB6C0000FBBE /* UIViewController+Swilzz.m in Sources */ = {isa = PBXBuildFile; fileRef = 4309ED981CA0FB6C0000FBBE /* UIViewController+Swilzz.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		4309ED921CA0ECCA0000FBBE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4309ED941CA0ECFA0000FBBE /* Person+test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Person+test.h"; sourceTree = "<group>"; };
 		4309ED951CA0ECFA0000FBBE /* Person+test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Person+test.m"; sourceTree = "<group>"; };
+		4309ED971CA0FB6C0000FBBE /* UIViewController+Swilzz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Swilzz.h"; sourceTree = "<group>"; };
+		4309ED981CA0FB6C0000FBBE /* UIViewController+Swilzz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Swilzz.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,8 @@
 				4309ED861CA0E6E60000FBBE /* Person.m */,
 				4309ED941CA0ECFA0000FBBE /* Person+test.h */,
 				4309ED951CA0ECFA0000FBBE /* Person+test.m */,
+				4309ED971CA0FB6C0000FBBE /* UIViewController+Swilzz.h */,
+				4309ED981CA0FB6C0000FBBE /* UIViewController+Swilzz.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				4309ED961CA0ECFA0000FBBE /* Person+test.m in Sources */,
 				4309ED721CA0E6510000FBBE /* ViewController.m in Sources */,
 				4309ED6F1CA0E6510000FBBE /* AppDelegate.m in Sources */,
+				4309ED991CA0FB6C0000FBBE /* UIViewController+Swilzz.m in Sources */,
 				4309ED871CA0E6E60000FBBE /* Person.m in Sources */,
 				4309ED901CA0EB730000FBBE /* HomeViewController.m in Sources */,
 				4309ED6C1CA0E6510000FBBE /* main.m in Sources */,

@@ -10,25 +10,25 @@
 #import "StudentForward.h"
 #import <objc/runtime.h>
 
-@implementation Student 
+@implementation Student
 
-#pragma mark - 获取实例变量和property属性
+#pragma mark - class_copyIvarList 和 class_copyPropertyList
 -(void) objcMethod {
-    //******************class_copyIvarList()来回去实例对象的property属性+实例变量*******************//
+    //*****方法 class_copyIvarList() 来取出 实例对象的property实例变量和带下划线的属性*******************//
     unsigned int numIvars = 0;
     NSString *key=nil;
-//    id StudentClass = objc_getClass("Student");
+    //    id StudentClass = objc_getClass("Student");
     Ivar * ivars = class_copyIvarList([self class], &numIvars);
     for(int i = 0; i < numIvars; i++) {
         Ivar thisIvar = ivars[i];
-//        const char *type = ivar_getTypeEncoding(thisIvar); // 获取类型
-//        NSString *stringType =  [NSString stringWithCString:type encoding:NSUTF8StringEncoding]; // 获取类型
+        //        const char *type = ivar_getTypeEncoding(thisIvar); // 获取类型
+        //        NSString *stringType =  [NSString stringWithCString:type encoding:NSUTF8StringEncoding]; // 获取类型
         key = [NSString stringWithUTF8String:ivar_getName(thisIvar)];
         NSLog(@"key = %@",key);
     }
     free(ivars);
     
-    //*********************class_copyPropertyList()来获取实例对象的property属性**********************//
+    //*****方法 class_copyPropertyList()来获取实例对象的property属性（不带下划线）**********************//
     unsigned int outCount, i;
     objc_property_t *properties = class_copyPropertyList([self class], &outCount);
     for (i = 0; i < outCount; i++) {
@@ -93,12 +93,11 @@
     if (!methodSignature) {
         methodSignature = [NSMethodSignature signatureWithObjCTypes:"v@:*"];
     }
-    
     return methodSignature;
 }
 
 -(void)forwardInvocation:(NSInvocation *)anInvocation {
-     StudentForward *stfd = [[StudentForward alloc] init];
+    StudentForward *stfd = [[StudentForward alloc] init];
     if ([stfd respondsToSelector:[anInvocation selector]]){
         [anInvocation invokeWithTarget:stfd];
     } else {

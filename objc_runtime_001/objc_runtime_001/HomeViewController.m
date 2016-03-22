@@ -25,7 +25,7 @@
     // 实例方法
     [st learnInstance:@"learnInstance"];
     // 类方法
-//    [Student learnClass:@"learnClass"];
+    //    [Student learnClass:@"learnClass"];
     
     // 调用这个方法来对比一下 object_getClass(obj) 和 [self class];的不同
     [self methodCompare];
@@ -36,7 +36,8 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) methodCompare {
+#pragma mark - 对比 object_getClass(obj) 和 [self class] 的不同
+- (void) methodCompare {
     // obj为实例对象
     id obj = [[Student alloc] init];
     // classObj为类对象

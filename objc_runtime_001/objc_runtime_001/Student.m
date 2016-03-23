@@ -10,6 +10,13 @@
 #import "StudentForward.h"
 #import <objc/runtime.h>
 
+@interface Student() {
+    NSString *test1;
+}
+@property (nonatomic, copy) NSString *test2;
+
+@end
+
 @implementation Student
 
 #pragma mark - class_copyIvarList 和 class_copyPropertyList

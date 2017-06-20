@@ -10,7 +10,14 @@
 #import "StudentForward.h"
 #import <objc/runtime.h>
 
+<<<<<<< HEAD
 @interface Student ()
+=======
+@interface Student() {
+    NSString *test1;
+}
+@property (nonatomic, copy) NSString *test2;
+>>>>>>> c88eb4a3697361878d6bbb46a671e56751fa7e0e
 
 @end
 

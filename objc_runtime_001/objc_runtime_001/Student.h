@@ -7,15 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Person.h"
 
-@interface Student : NSObject {
+@interface Student : Person {
     // 私有变量
-    NSString *other;
+    NSString *name;
+    int age;
 }
 // 属性
-@property (nonatomic, assign) long cid;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) int age;
 @property (nonatomic, copy) NSString *sex;
 
 // objc的一些方法 如class_copyIvarList和class_copyPropertyList

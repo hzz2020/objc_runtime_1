@@ -19,6 +19,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    Student *student = [[Student alloc] init];
+    
+    Ivar name_ivar = class_getInstanceVariable(object_getClass(student), "name");
+    object_setIvar(student, name_ivar, @"Jenny");
+    NSLog(@"name = %@", object_getIvar(student, name_ivar));
+    
+    Ivar age_ivar = class_getInstanceVariable(object_getClass(student), "age");
+    object_setIvar(student, age_ivar, [NSNumber numberWithInt:10]);
+    NSLog(@"age = %@", object_getIvar(student, age_ivar));
+    
+    NSLog(@"%@", student);
+    
+    //  还有另一种方式：基地址+偏移量来设值
+    int *age_pointer = (int *)((__bridge void *)(student) + ivar_getOffset(age_ivar));
+    *age_pointer = 10;
+    
+    Ivar sex_ivar = class_getInstanceVariable(object_getClass(student), "_sex");
+    object_setIvar(student, sex_ivar, @"nv");
+    NSLog(@"sex = %@", object_getIvar(student, sex_ivar));
+    
+    NSLog(@"%@", student);
     
     Student *st = [[Student alloc] init];
     [st objcMethod];

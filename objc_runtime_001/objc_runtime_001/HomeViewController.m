@@ -25,16 +25,18 @@
     object_setIvar(student, name_ivar, @"Jenny");
     NSLog(@"name = %@", object_getIvar(student, name_ivar));
     
+    // 基本类型 用这个方法是有问题的
     Ivar age_ivar = class_getInstanceVariable(object_getClass(student), "age");
     object_setIvar(student, age_ivar, [NSNumber numberWithInt:10]);
     NSLog(@"age = %@", object_getIvar(student, age_ivar));
     
     NSLog(@"%@", student);
     
-    //  还有另一种方式：基地址+偏移量来设值
+    //  用另一种方式：基地址+偏移量来设值
     int *age_pointer = (int *)((__bridge void *)(student) + ivar_getOffset(age_ivar));
     *age_pointer = 10;
     
+    // 属性用_ivar形式
     Ivar sex_ivar = class_getInstanceVariable(object_getClass(student), "_sex");
     object_setIvar(student, sex_ivar, @"nv");
     NSLog(@"sex = %@", object_getIvar(student, sex_ivar));
@@ -46,7 +48,7 @@
     // 实例方法
     [st learnInstance:@"learnInstance"];
     // 类方法
-    //    [Student learnClass:@"learnClass"];
+    [Student learnClass:@"learnClass"];
     
     // 调用这个方法来对比一下 object_getClass(obj) 和 [self class];的不同
     [self methodCompare];

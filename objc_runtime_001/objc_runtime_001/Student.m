@@ -10,14 +10,7 @@
 #import "StudentForward.h"
 #import <objc/runtime.h>
 
-<<<<<<< HEAD
 @interface Student ()
-=======
-@interface Student() {
-    NSString *test1;
-}
-@property (nonatomic, copy) NSString *test2;
->>>>>>> c88eb4a3697361878d6bbb46a671e56751fa7e0e
 
 @end
 
@@ -84,54 +77,54 @@
     free(methods);
 }
 
-//#pragma mark - ①默认方式 即消息的接收者能够找到对应的selector，那么就直接执行接收者这个对象的特定方法
-//// 实例Method
-//-(void) learnInstance:(NSString *)string{
-//    NSLog(@"learnInstance = %@", string);
-//}
-//// 类Method
-//+(void) learnClass:(NSString *) string {
-//    NSLog(@"learnClass = %@", string);
-//}
+#pragma mark - ①默认方式 即消息的接收者能够找到对应的selector，那么就直接执行接收者这个对象的特定方法
+// 实例Method
+-(void) learnInstance:(NSString *)string{
+    NSLog(@"learnInstance = %@", string);
+}
+// 类Method
++(void) learnClass:(NSString *) string {
+    NSLog(@"learnClass = %@", string);
+}
 
-//#pragma mark - ②消息转发 resolveInstanceMethod
-//// 针对实例方法
-//+(BOOL) resolveInstanceMethod:(SEL)sel {
-//    if (sel == @selector(learnInstance:)) {
-//       BOOL addMethod = class_addMethod([self class], sel, class_getMethodImplementation([self class], @selector(myInstanceMethod:)), "v@:");
-//        return addMethod;
-//    }
-//    return [super resolveInstanceMethod:sel];
-//}
-//
-//-(void) myInstanceMethod:(NSString *)string {
-//    NSLog(@"myInstanceMethod = %@", string);
-//}
-//
-//#pragma mark - ②消息转发resolveClassMethod
-//// 针对类方法
-//+(BOOL) resolveClassMethod:(SEL)sel {
-//    if (sel == @selector(learnClass:)) {
-//        // 此处注意 object_getClass(self) 和 [self class]的区别;
-//        class_addMethod(object_getClass(self), sel, class_getMethodImplementation(object_getClass(self), @selector(myClassMethod:)), "v@:");
-//        return YES;
-//    }
-//    return [super resolveClassMethod:sel];
-//}
-//
-//// 这里也要是类(+)方法
-//+(void) myClassMethod:(NSString *)string {
-//    NSLog(@"myClassMethod = %@", string);
-//}
+#pragma mark - ②消息转发 resolveInstanceMethod
+// 针对实例方法
++(BOOL) resolveInstanceMethod:(SEL)sel {
+    if (sel == @selector(learnInstance:)) {
+       BOOL addMethod = class_addMethod([self class], sel, class_getMethodImplementation([self class], @selector(myInstanceMethod:)), "v@:");
+        return addMethod;
+    }
+    return [super resolveInstanceMethod:sel];
+}
+
+-(void) myInstanceMethod:(NSString *)string {
+    NSLog(@"myInstanceMethod = %@", string);
+}
+
+#pragma mark - ②消息转发resolveClassMethod
+// 针对类方法
++(BOOL) resolveClassMethod:(SEL)sel {
+    if (sel == @selector(learnClass:)) {
+        // 此处注意 object_getClass(self) 和 [self class]的区别;
+        class_addMethod(object_getClass(self), sel, class_getMethodImplementation(object_getClass(self), @selector(myClassMethod:)), "v@:");
+        return YES;
+    }
+    return [super resolveClassMethod:sel];
+}
+
+// 这里也要是类(+)方法
++(void) myClassMethod:(NSString *)string {
+    NSLog(@"myClassMethod = %@", string);
+}
 
 
-//#pragma mark - ③重定向 forwardingTargetForSelector 对实例方法
-//-(id)forwardingTargetForSelector:(SEL)aSelector {
-//    if (aSelector == @selector(learnInstance:)) {
-//        return [[StudentForward alloc] init];
-//    }
-//    return [super forwardingTargetForSelector:aSelector];
-//}
+#pragma mark - ③重定向 forwardingTargetForSelector 对实例方法
+-(id)forwardingTargetForSelector:(SEL)aSelector {
+    if (aSelector == @selector(learnInstance:)) {
+        return [[StudentForward alloc] init];
+    }
+    return [super forwardingTargetForSelector:aSelector];
+}
 
 #pragma mark - ④转发 forwardInvocation
 -(NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {

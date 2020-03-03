@@ -162,6 +162,10 @@
     }
 }
 
+-(void) doesNotRecognizeSelector:(SEL)aSelector {
+    NSLog(@"------- %s", __FUNCTION__);
+}
+
 /// 针对类方法
 +(NSMethodSignature *) methodSignatureForSelector:(SEL)aSelector {
     NSMethodSignature *methodSignature = [super methodSignatureForSelector:aSelector];
@@ -177,6 +181,10 @@
     } else {
         [super forwardInvocation:anInvocation];
     }
+}
+
++(void) doesNotRecognizeSelector:(SEL)aSeletor {
+    NSLog(@"+++++++ %s", __FUNCTION__);
 }
 
 

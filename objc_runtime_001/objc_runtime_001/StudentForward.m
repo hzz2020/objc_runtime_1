@@ -16,5 +16,9 @@
     
 }
 
++(void) learnClass:(NSString *) string {
+    NSLog(@"StudentForward learnClass = %@", string);
+}
+
 
 @end

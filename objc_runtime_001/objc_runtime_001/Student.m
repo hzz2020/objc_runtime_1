@@ -91,7 +91,10 @@
 // 针对实例方法
 +(BOOL) resolveInstanceMethod:(SEL)sel {
     if (sel == @selector(learnInstance:)) {
-       BOOL addMethod = class_addMethod([self class], sel, class_getMethodImplementation([self class], @selector(myInstanceMethod:)), "v@:");
+        BOOL addMethod = class_addMethod([self class],
+                                         sel,
+                                         class_getMethodImplementation([self class], @selector(myInstanceMethod:)),
+                                         "v@:");
         return addMethod;
     }
     return [super resolveInstanceMethod:sel];
@@ -106,7 +109,10 @@
 +(BOOL) resolveClassMethod:(SEL)sel {
     if (sel == @selector(learnClass:)) {
         // 此处注意 object_getClass(self) 和 [self class]的区别;
-        class_addMethod(object_getClass(self), sel, class_getMethodImplementation(object_getClass(self), @selector(myClassMethod:)), "v@:");
+        class_addMethod(object_getClass(self),
+                        sel,
+                        class_getMethodImplementation(object_getClass(self), @selector(myClassMethod:)),
+                        "v@:");
         return YES;
     }
     return [super resolveClassMethod:sel];
@@ -118,16 +124,28 @@
 }
 
 
-#pragma mark - ③重定向 forwardingTargetForSelector 对实例方法
--(id)forwardingTargetForSelector:(SEL)aSelector {
+#pragma mark - ③重定向 forwardingTargetForSelector
+// 针对实例方法
+-(id) forwardingTargetForSelector:(SEL)aSelector {
     if (aSelector == @selector(learnInstance:)) {
         return [[StudentForward alloc] init];
     }
+    
+    return [super forwardingTargetForSelector:aSelector];
+}
+
+// 针对类方法
++(id) forwardingTargetForSelector:(SEL)aSelector {
+    if (aSelector == @selector(learnClass:)) {
+        return [StudentForward class];
+    }
+    
     return [super forwardingTargetForSelector:aSelector];
 }
 
 #pragma mark - ④转发 forwardInvocation
--(NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+/// 针对实例方法
+-(NSMethodSignature *) methodSignatureForSelector:(SEL)aSelector {
     NSMethodSignature *methodSignature = [super methodSignatureForSelector:aSelector];
     if (!methodSignature) {
         methodSignature = [NSMethodSignature signatureWithObjCTypes:"v@:*"];
@@ -135,10 +153,27 @@
     return methodSignature;
 }
 
--(void)forwardInvocation:(NSInvocation *)anInvocation {
+-(void) forwardInvocation:(NSInvocation *)anInvocation {
     StudentForward *stfd = [[StudentForward alloc] init];
     if ([stfd respondsToSelector:[anInvocation selector]]){
         [anInvocation invokeWithTarget:stfd];
+    } else {
+        [super forwardInvocation:anInvocation];
+    }
+}
+
+/// 针对类方法
++(NSMethodSignature *) methodSignatureForSelector:(SEL)aSelector {
+    NSMethodSignature *methodSignature = [super methodSignatureForSelector:aSelector];
+    if (!methodSignature) {
+        methodSignature = [StudentForward methodSignatureForSelector:aSelector];
+    }
+    return methodSignature;
+}
+
++(void) forwardInvocation:(NSInvocation *)anInvocation {
+    if ([StudentForward respondsToSelector:[anInvocation selector]]){
+        [anInvocation invokeWithTarget:[StudentForward class]];
     } else {
         [super forwardInvocation:anInvocation];
     }

@@ -18,6 +18,7 @@
 		94A8C4A51C9B0CA70010E1B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A8C4A41C9B0CA70010E1B2 /* AppDelegate.m */; };
 		94A8C4AB1C9B0CA70010E1B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A8C4A91C9B0CA70010E1B2 /* Main.storyboard */; };
 		94A8C4AD1C9B0CA70010E1B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A8C4AC1C9B0CA70010E1B2 /* Assets.xcassets */; };
+		A6CEE36525F2362B0004EB1D /* Student4Forward.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CEE36425F2362B0004EB1D /* Student4Forward.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		94A8C4AA1C9B0CA70010E1B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94A8C4AC1C9B0CA70010E1B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94A8C4B11C9B0CA70010E1B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6CEE36325F2362B0004EB1D /* Student4Forward.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student4Forward.h; sourceTree = "<group>"; };
+		A6CEE36425F2362B0004EB1D /* Student4Forward.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Student4Forward.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 				43D41CE71C9BA2C1004763E2 /* Student.m */,
 				43D41CEB1C9BB5A9004763E2 /* StudentForward.h */,
 				43D41CEC1C9BB5A9004763E2 /* StudentForward.m */,
+				A6CEE36325F2362B0004EB1D /* Student4Forward.h */,
+				A6CEE36425F2362B0004EB1D /* Student4Forward.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -210,6 +216,7 @@
 				43D41CED1C9BB5A9004763E2 /* StudentForward.m in Sources */,
 				944386D71EF90BE4007FFA0A /* Person.m in Sources */,
 				94A8C4A51C9B0CA70010E1B2 /* AppDelegate.m in Sources */,
+				A6CEE36525F2362B0004EB1D /* Student4Forward.m in Sources */,
 				43D41CE81C9BA2C1004763E2 /* Student.m in Sources */,
 				94A8C4A21C9B0CA70010E1B2 /* main.m in Sources */,
 				43D41CE11C9BA26B004763E2 /* HomeViewController.m in Sources */,

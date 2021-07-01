@@ -8,6 +8,7 @@
 
 #import "Student.h"
 #import "StudentForward.h"
+#import "Student4Forward.h"
 #import <objc/runtime.h>
 
 @interface Student ()
@@ -76,7 +77,7 @@
     }
     free(methods);
 }
-
+/*
 #pragma mark - ①默认方式 即消息的接收者能够找到对应的selector，那么就直接执行接收者这个对象的特定方法
 // 实例Method
 -(void) learnInstance:(NSString *)string{
@@ -142,7 +143,7 @@
     
     return [super forwardingTargetForSelector:aSelector];
 }
-
+ */
 #pragma mark - ④转发 forwardInvocation
 /// 针对实例方法
 -(NSMethodSignature *) methodSignatureForSelector:(SEL)aSelector {
@@ -154,7 +155,7 @@
 }
 
 -(void) forwardInvocation:(NSInvocation *)anInvocation {
-    StudentForward *stfd = [[StudentForward alloc] init];
+    Student4Forward *stfd = [[Student4Forward alloc] init];
     if ([stfd respondsToSelector:[anInvocation selector]]){
         [anInvocation invokeWithTarget:stfd];
     } else {
@@ -170,14 +171,14 @@
 +(NSMethodSignature *) methodSignatureForSelector:(SEL)aSelector {
     NSMethodSignature *methodSignature = [super methodSignatureForSelector:aSelector];
     if (!methodSignature) {
-        methodSignature = [StudentForward methodSignatureForSelector:aSelector];
+        methodSignature = [Student4Forward methodSignatureForSelector:aSelector];
     }
     return methodSignature;
 }
 
 +(void) forwardInvocation:(NSInvocation *)anInvocation {
-    if ([StudentForward respondsToSelector:[anInvocation selector]]){
-        [anInvocation invokeWithTarget:[StudentForward class]];
+    if ([Student4Forward respondsToSelector:[anInvocation selector]]){
+        [anInvocation invokeWithTarget:[Student4Forward class]];
     } else {
         [super forwardInvocation:anInvocation];
     }

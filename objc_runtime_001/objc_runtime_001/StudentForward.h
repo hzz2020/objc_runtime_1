@@ -10,9 +10,9 @@
 
 @interface StudentForward : NSObject
 
--(void) learnInstance:(NSString *) string;
-
-// 类(+)方法
-+(void) learnClass:(NSString *) string;
+//-(void) learnInstance:(NSString *) string;
+//
+//// 类(+)方法
+//+(void) learnClass:(NSString *) string;
 
 @end

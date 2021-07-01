@@ -16,7 +16,7 @@
     dispatch_once(&onceToken, ^{
         
         SEL originSelector = @selector(viewWillAppear:);
-        SEL nowginSelector = @selector(swilzz_wiewWillAppear:);
+        SEL nowginSelector = @selector(swilzz_viewWillAppear:);
         
         // 实例方法
         Class aClass = [self class];
@@ -43,8 +43,8 @@
     });
 }
 
--(void)swilzz_wiewWillAppear:(BOOL)animated {
-    [self swilzz_wiewWillAppear:animated];
+-(void)swilzz_viewWillAppear:(BOOL)animated {
+    [self swilzz_viewWillAppear:animated];
     NSLog(@"self = %@", self);
     
 }
